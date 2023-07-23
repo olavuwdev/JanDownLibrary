@@ -1,2 +1,3 @@
 pyuic6 –o cadastro_usuario.py –x cadastro_usuario.ui
-python -m PyQt6.uic.pyuic -o cadastro_usuario.py -x cadastro_usuario.ui
+python -m PyQt6.uic.pyuic -o tela_sobre.py -x tela_sobre.ui
+
