@@ -11,7 +11,7 @@ import mysql.connector
 from PyQt6.QtWidgets import QMessageBox
 
 conexao = mysql.connector.connect(
-    host='localhost', user='root', password='', database='lib_jondown'
+    host='localhost', user='root', password='', database='jdlivraria'
 )
 cursor = conexao.cursor()
 print('Banco conectado')
@@ -108,19 +108,29 @@ class Ui_screen_cadastro_usuario(object):
         senha_conf = self.line_cad_senha_cheked.text()
 
         if nome != "" and senha == senha_conf:
-            sql_pes = '''SELECT * FROM usuario WHERE nome = %s;'''
-            cursor.execute(sql_pes, (nome))
+            sql_pes = "SELECT * FROM usuarios WHERE usuario = %s"
+            cursor.execute(sql_pes, (nome,))
             dados = cursor.fetchall()
-            print(dados)
+            print(len(dados))
             if len(dados) == 0:
-                sql = '''INSERT INTO usuario VALUES(null, %s, MD5(%s));'''
+                sql = '''INSERT INTO usuarios VALUES(null, %s, MD5(%s));'''
                 cursor.execute(sql,(nome, senha))
                 conexao.commit()
                 msg = QMessageBox()
-                msg.setText("Cadastro realizado!")
-            else:
+                msg.setWindowTitle('Aviso')
+                msg.setText("Cadastrado com SUCESSO!")
+                msg.exec()
+
+                #limpando os campos
+                self.line_cad_nome.setText("")
+                self.line_cad_senha.setText("")
+                self.line_cad_senha_cheked.setText("")
+                
+            elif len(dados) >=1 :
                   msg = QMessageBox()
-                  msg.setText("Nome de usuario ja existe")  
+                  msg.setWindowTitle('Aviso')
+                  msg.setText("Nome de usuario ja existe!")
+                  msg.exec()
         elif nome == "":
             msg = QMessageBox()
             msg.setWindowTitle('Aviso')
