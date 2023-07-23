@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Tela_principal</class>
+ <widget class="QMainWindow" name="Tela_principal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>533</width>
+    <height>440</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>JanBaixo</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="Tela_central">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>511</width>
+      <height>421</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="page1">
+     <attribute name="title">
+      <string>Lista</string>
+     </attribute>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>10</y>
+        <width>491</width>
+        <height>371</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QPushButton" name="botao_listar">
+           <property name="text">
+            <string>Listar</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="botao_pesquisar">
+           <property name="text">
+            <string>Pesquisar</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="line_pesquisar"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="Tela_lista">
+         <column>
+          <property name="text">
+           <string>Código</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Título</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Autor</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Editora</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Preço</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page2">
+     <attribute name="title">
+      <string>Registrar</string>
+     </attribute>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>481</width>
+        <height>367</height>
+       </rect>
+      </property>
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="0" column="0">
+        <widget class="QLabel" name="Titulo">
+         <property name="text">
+          <string>Título</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="Autor">
+         <property name="text">
+          <string>Autor</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="Editora">
+         <property name="text">
+          <string>Editora</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="line_editora"/>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="Preco">
+         <property name="text">
+          <string>Preço</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLineEdit" name="line_preco"/>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="line_titulo"/>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="line_autor"/>
+       </item>
+       <item row="9" column="1">
+        <widget class="QPlainTextEdit" name="Text_descricao"/>
+       </item>
+       <item row="9" column="0">
+        <widget class="QLabel" name="Descricao">
+         <property name="text">
+          <string>Descrição</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="1">
+        <widget class="QPushButton" name="botao_salvar">
+         <property name="text">
+          <string>Salvar</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page3">
+     <attribute name="title">
+      <string>Editar</string>
+     </attribute>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>11</x>
+        <y>7</y>
+        <width>481</width>
+        <height>387</height>
+       </rect>
+      </property>
+      <layout class="QFormLayout" name="formLayout">
+       <item row="0" column="0" colspan="2">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="codigo_label">
+           <property name="text">
+            <string>Código</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="line_codigoPsq"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="botao_pesquisar_2">
+           <property name="text">
+            <string>Pesquisar</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="Titulo_2">
+         <property name="text">
+          <string>Título</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="line_titulo_2"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="Autor_2">
+         <property name="text">
+          <string>Autor</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="line_autor_2"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="Editora_2">
+         <property name="text">
+          <string>Editora</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="line_editora_2"/>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="Preco_2">
+         <property name="text">
+          <string>Preço</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="line_preco_2"/>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="Descricao_2">
+         <property name="text">
+          <string>Descrição</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QPlainTextEdit" name="Text_descricao_2"/>
+       </item>
+       <item row="6" column="1">
+        <widget class="QPushButton" name="Botao_excluir">
+         <property name="text">
+          <string>Excluir</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QPushButton" name="botao_salvar_2">
+         <property name="text">
+          <string>Salvar</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
