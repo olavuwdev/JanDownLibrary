@@ -35,7 +35,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>j.png</normaloff>j.png</iconset>
+    <normaloff>../../../../.designer/backup/j.png</normaloff>../../../../.designer/backup/j.png</iconset>
   </property>
   <property name="windowOpacity">
    <double>0.950000000000000</double>
@@ -50,8 +50,8 @@
    <widget class="QLabel" name="titulo_jd">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>50</y>
+      <x>120</x>
+      <y>30</y>
       <width>386</width>
       <height>111</height>
      </rect>
@@ -72,8 +72,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>150</y>
+      <x>260</x>
+      <y>130</y>
       <width>116</width>
       <height>40</height>
      </rect>
@@ -95,8 +95,8 @@
    <widget class="QWidget" name="gridLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>230</y>
+      <x>130</x>
+      <y>220</y>
       <width>281</width>
       <height>191</height>
      </rect>
@@ -181,23 +181,27 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>200</y>
-      <width>131</width>
-      <height>31</height>
+      <x>270</x>
+      <y>170</y>
+      <width>121</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>ISOCT3</family>
-      <pointsize>25</pointsize>
+      <family>Nirmala UI Semilight</family>
+      <pointsize>30</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">font: 30pt &quot;Nirmala UI Semilight&quot;;
+color:rgb(255, 255, 255)</string>
+    </property>
     <property name="text">
-     <string>LOGIN</string>
+     <string>Login</string>
     </property>
     <property name="textFormat">
      <enum>Qt::PlainText</enum>
@@ -206,8 +210,8 @@
    <widget class="QLabel" name="label_user_cad">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>470</y>
+      <x>230</x>
+      <y>420</y>
       <width>181</width>
       <height>20</height>
      </rect>
@@ -231,8 +235,8 @@
    <widget class="QPushButton" name="bt_entrar_2">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>490</y>
+      <x>240</x>
+      <y>450</y>
       <width>174</width>
       <height>25</height>
      </rect>
@@ -252,6 +256,59 @@ color: rgb(0, 0, 0);</string>
     </property>
     <property name="text">
      <string>CADASTRE-SE</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_sobre">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>550</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 85, 255);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../../.designer/backup/icon_info.png</normaloff>../../../../.designer/backup/icon_info.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_password_2">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>550</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nirmala UI Semilight</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Sobre e Integrantes</string>
     </property>
    </widget>
   </widget>
