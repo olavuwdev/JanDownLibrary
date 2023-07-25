@@ -10,7 +10,7 @@ try:
     from PyQt6 import QtCore, QtGui, QtWidgets
     from PyQt6.QtWidgets import QMessageBox
     conexao = mysql.connector.connect(
-        host='localhost', user='root', password='', database='jdlivraria'
+        host='localhost', user='root', password='', database='lib_jondown'
     )
     cursor = conexao.cursor()
     print('Banco conectado')
