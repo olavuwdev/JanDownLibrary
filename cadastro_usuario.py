@@ -11,7 +11,7 @@ import mysql.connector
 from PyQt6.QtWidgets import QMessageBox
 
 conexao = mysql.connector.connect(
-    host='localhost', user='root', password='', database='lib_jondown'
+    host='localhost', user='root', password='', database='jdlivraria'
 )
 cursor = conexao.cursor()
 print('Banco conectado')
@@ -35,6 +35,9 @@ class Ui_screen_cadastro_usuario(object):
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("imgs\j.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        screen_cadastro_usuario.setWindowIcon(icon)
         self.label_cadastrodeusuario.setFont(font)
         self.label_cadastrodeusuario.setStyleSheet("font: 30pt \"Nirmala UI Semilight\";\n"
 "color: rgb(255, 255, 255);")

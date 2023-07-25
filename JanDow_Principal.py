@@ -10,7 +10,7 @@ try:
     import mysql.connector
     from PyQt6.QtWidgets import QMessageBox
     conexao = mysql.connector.connect(
-            host='localhost', user='root', password='', database='lib_jondown'
+            host='localhost', user='root', password='', database='jdlivraria'
         )
     cursor = conexao.cursor()
 
@@ -33,7 +33,7 @@ try:
     "color: rgb(0, 0, 0);")
             self.page1.setObjectName("page1")
             self.layoutWidget = QtWidgets.QWidget(parent=self.page1)
-            self.layoutWidget.setGeometry(QtCore.QRect(5, 10, 531, 371))
+            self.layoutWidget.setGeometry(QtCore.QRect(5, 5, 600, 500))
             self.layoutWidget.setObjectName("layoutWidget")
             self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget)
             self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -43,6 +43,8 @@ try:
             self.botao_listar = QtWidgets.QPushButton(parent=self.layoutWidget)
             self.botao_listar.setStyleSheet("background-color: rgb(255, 255, 255);")
             icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("imgs\j.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+            Tela_principal.setWindowIcon(icon)
             icon.addPixmap(QtGui.QPixmap("imgs/tarefa.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
             self.botao_listar.setIcon(icon)
             self.botao_listar.setObjectName("botao_listar")
@@ -222,7 +224,7 @@ try:
 
         def retranslateUi(self, Tela_principal):
             _translate = QtCore.QCoreApplication.translate
-            Tela_principal.setWindowTitle(_translate("Tela_principal", "JanBaixo"))
+            Tela_principal.setWindowTitle(_translate("Tela_principal", "JanDonw Livros"))
             self.botao_listar.setText(_translate("Tela_principal", "Listar"))
             self.botao_pesquisar.setText(_translate("Tela_principal", "Pesquisar"))
             item = self.Tela_lista.horizontalHeaderItem(0)
@@ -270,21 +272,27 @@ try:
                 #captura a descrição
                 descrição = self.Text_descricao.toPlainText()
 
-                #print(titulo,autor,editora,preço,descrição)
-                sql = "INSERT INTO livros VALUES(null, %s, %s, %s, %s, %s)"
-                cursor.execute(sql, (titulo, autor, editora, preço, descrição,))
-                conexao.commit()
+                if titulo == "" or editora == "" or preço == "" or autor == "" and descrição == "":
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Aviso")
+                    msg.setText("Preencha todas as informações!")
+                    msg.exec()
+                else:    
+                    #print(titulo,autor,editora,preço,descrição)
+                    sql = "INSERT INTO livros VALUES(null, %s, %s, %s, %s, %s)"
+                    cursor.execute(sql, (titulo, autor, editora, preço, descrição,))
+                    conexao.commit()
 
-                msg = QMessageBox()
-                msg.setWindowTitle("Aviso")
-                msg.setText("Inserido com sucesso")
-                msg.exec()
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Aviso")
+                    msg.setText("Inserido com sucesso")
+                    msg.exec()
 
-                self.line_titulo.setText("")
-                self.line_autor.setText("")
-                self.line_editora.setText("")
-                self.line_preco.setText("")
-                self.Text_descricao.setPlainText("")
+                    self.line_titulo.setText("")
+                    self.line_autor.setText("")
+                    self.line_editora.setText("")
+                    self.line_preco.setText("")
+                    self.Text_descricao.setPlainText("")
 
         def listar(self):
             cursor.execute("SELECT * FROM livros")
@@ -308,6 +316,7 @@ try:
 
         def pesquisar(self):
             nome = self.line_pesquisar.text()
+            
             cursor.execute("SELECT * FROM livros WHERE titulo LIKE '%"+nome+"%'")
             lista = cursor.fetchall()
             self.Tela_lista.setRowCount(len(lista))
@@ -328,16 +337,32 @@ try:
                 contador += 1
         
         def codigoPsq(self):
-            cody = self.line_codigoPsq.text()
-            cursor.execute("SELECT * FROM livros WHERE codigo = " + cody)
-            lista = cursor.fetchall()
-            print(lista)
-            if len(lista) > 0: #o registro existe
-                self.line_titulo_2.setText(lista[0][1])
-                self.line_autor_2.setText(lista[0][2])
-                self.line_editora_2.setText(lista[0][3])
-                self.line_preco_2.setText(str(lista[0][4]))
-                self.Text_descricao_2.setPlainText(lista[0][5])
+            try:
+                cody = int(self.line_codigoPsq.text())
+                if cody == 0:
+                    print("Pesquise por um código válido")
+                else:
+                    cursor.execute("SELECT * FROM livros WHERE codigo = " + str(cody))
+                    lista = cursor.fetchall()
+                    if len(lista) > 0:  # O registro existe
+                        self.line_titulo_2.setText(lista[0][1])
+                        self.line_autor_2.setText(lista[0][2])
+                        self.line_editora_2.setText(lista[0][3])
+                        self.line_preco_2.setText(str(lista[0][4]))
+                        self.Text_descricao_2.setPlainText(lista[0][5])
+                    else:
+                        msg = QMessageBox()
+                        msg.setWindowTitle("Aviso")
+                        msg.setText("Codigo não localizado!")
+                        msg.exec()
+            except ValueError:
+                msg = QMessageBox()
+                msg.setWindowTitle("Aviso")
+                msg.setText("Digite um codigo valido(Numero inteiro)")
+                msg.exec()
+            except mysql.connector.Error as e:
+                print(f"Erro ao conectar ao banco de dados: {e}")
+        
 
         def salvar_2(self):
             codigo = self.line_codigoPsq.text()
@@ -347,21 +372,27 @@ try:
             preço = self.line_preco_2.text()
             descrição = self.Text_descricao_2.toPlainText()
 
-            sql = "UPDATE livros SET titulo = %s, autor = %s,  editora = %s, preco = %s, descricao = %s WHERE codigo = %s"
-            cursor.execute(sql, (titulo, autor, editora, preço, descrição, codigo,))
-            conexao.commit()
+            if titulo == "" and editora == "" and preço == "" and autor == "" and descrição == "":
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Aviso")
+                    msg.setText("Preencha todas as informações!")
+                    msg.exec()
+            else:
+                sql = "UPDATE livros SET titulo = %s, autor = %s,  editora = %s, preco = %s, descricao = %s WHERE codigo = %s"
+                cursor.execute(sql, (titulo, autor, editora, preço, descrição, codigo,))
+                conexao.commit()
 
-            msg = QMessageBox()
-            msg.setWindowTitle("Aviso")
-            msg.setText("Alterado com sucesso")
-            msg.exec()
+                msg = QMessageBox()
+                msg.setWindowTitle("Aviso")
+                msg.setText("Alterado com sucesso")
+                msg.exec()
 
-            self.line_codigoPsq.setText("")
-            self.line_titulo_2.setText("")
-            self.line_autor_2.setText("")
-            self.line_editora_2.setText("")
-            self.line_preco_2.setText("")
-            self.Text_descricao_2.setPlainText("")
+                self.line_codigoPsq.setText("")
+                self.line_titulo_2.setText("")
+                self.line_autor_2.setText("")
+                self.line_editora_2.setText("")
+                self.line_preco_2.setText("")
+                self.Text_descricao_2.setPlainText("")
         
         def excluir(self):
             codigo = self.line_codigoPsq.text()
