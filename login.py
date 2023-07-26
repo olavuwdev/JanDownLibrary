@@ -13,8 +13,8 @@ try:
             JanDow.setObjectName("JanDow")
             JanDow.setEnabled(True)
             JanDow.resize(621, 602)
-            JanDow.setMinimumSize(QtCore.QSize(100, 100))
-            JanDow.setMaximumSize(QtCore.QSize(900, 800))
+            JanDow.setMinimumSize(QtCore.QSize(621, 602))
+            JanDow.setMaximumSize(QtCore.QSize(621, 602))
             font = QtGui.QFont()
             font.setPointSize(3)
             JanDow.setFont(font)
@@ -129,7 +129,7 @@ try:
             self.bt_sobre.setStyleSheet("background-color: rgb(170, 85, 255);")
             self.bt_sobre.setText("")
             icon1 = QtGui.QIcon()
-            icon1.addPixmap(QtGui.QPixmap("imgs/icon_info.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+            icon1.addPixmap(QtGui.QPixmap("imgs\icon_info.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
             self.bt_sobre.setIcon(icon1)
             self.bt_sobre.setIconSize(QtCore.QSize(20, 20))
             self.bt_sobre.setObjectName("bt_sobre")
@@ -139,6 +139,8 @@ try:
             font = QtGui.QFont()
             font.setFamily("Nirmala UI Semilight")
             font.setPointSize(10)
+            #C:\Users\Olavo Adriel\OneDrive - IFRN\Documents\Python\jandonw_biblioteca\login.py
+            #C:\Users\Olavo Adriel\OneDrive - IFRN\Documents\Python\jandonw_biblioteca\imgs\icon_info.png
             self.label_sobre.setFont(font)
             self.label_sobre.setObjectName("label_sobre")
             JanDow.setCentralWidget(self.centralwidget)

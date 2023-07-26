@@ -18,7 +18,9 @@ try:
     class Ui_Tela_principal(object):
         def setupUi(self, Tela_principal):
             Tela_principal.setObjectName("Tela_principal")
-            Tela_principal.resize(755, 547)
+            Tela_principal.resize(755, 560)
+            Tela_principal.setMaximumSize(755, 560)
+            Tela_principal.setMinimumSize(755, 560)
             Tela_principal.setStyleSheet("background-color: rgb(0, 0, 0);")
             self.centralwidget = QtWidgets.QWidget(parent=Tela_principal)
             self.centralwidget.setObjectName("centralwidget")
@@ -50,6 +52,11 @@ try:
             self.botao_listar.setObjectName("botao_listar")
             self.botao_listar.clicked.connect(self.listar)
             self.horizontalLayout.addWidget(self.botao_listar)
+            self.voltar = QtWidgets.QPushButton(parent=self.page1)
+            self.voltar.setStyleSheet("background-color: rgb(255, 0, 0);")
+            self.voltar.setGeometry(QtCore.QRect(640, 10, 75, 23))
+            self.voltar.setObjectName("voltar")
+            #self.voltar.clicked.connect(self.voltar_lg)
             self.botao_pesquisar = QtWidgets.QPushButton(parent=self.layoutWidget)
             self.botao_pesquisar.setStyleSheet("background-color: rgb(255, 255, 255);")
             icon1 = QtGui.QIcon()
@@ -66,6 +73,7 @@ try:
             self.Tela_lista.setStyleSheet("background-color: rgb(255, 255, 255);")
             self.Tela_lista.setObjectName("Tela_lista")
             self.Tela_lista.setColumnCount(5)
+            self.Tela_lista.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
             self.Tela_lista.setRowCount(0)
             item = QtWidgets.QTableWidgetItem()
             self.Tela_lista.setHorizontalHeaderItem(0, item)
@@ -77,6 +85,7 @@ try:
             self.Tela_lista.setHorizontalHeaderItem(3, item)
             item = QtWidgets.QTableWidgetItem()
             self.Tela_lista.setHorizontalHeaderItem(4, item)
+            
             self.verticalLayout.addWidget(self.Tela_lista)
             self.Tela_central.addTab(self.page1, "")
             self.page2 = QtWidgets.QWidget()
@@ -227,6 +236,7 @@ try:
             Tela_principal.setWindowTitle(_translate("Tela_principal", "JanDonw Livros"))
             self.botao_listar.setText(_translate("Tela_principal", "Listar"))
             self.botao_pesquisar.setText(_translate("Tela_principal", "Pesquisar"))
+            self.Tela_lista.setSortingEnabled(True)
             item = self.Tela_lista.horizontalHeaderItem(0)
             item.setText(_translate("Tela_principal", "Código"))
             item = self.Tela_lista.horizontalHeaderItem(1)
@@ -237,6 +247,9 @@ try:
             item.setText(_translate("Tela_principal", "Editora"))
             item = self.Tela_lista.horizontalHeaderItem(4)
             item.setText(_translate("Tela_principal", "Preço"))
+            __sortingEnabled = self.Tela_lista.isSortingEnabled()
+            self.Tela_lista.setSortingEnabled(False)
+            self.Tela_lista.setSortingEnabled(__sortingEnabled)
             self.Tela_central.setTabText(self.Tela_central.indexOf(self.page1), _translate("Tela_principal", "Lista"))
             self.Titulo.setText(_translate("Tela_principal", "Título"))
             self.Autor.setText(_translate("Tela_principal", "Autor"))
@@ -244,6 +257,7 @@ try:
             self.Preco.setText(_translate("Tela_principal", "Preço"))
             self.Descricao.setText(_translate("Tela_principal", "Descrição"))
             self.botao_salvar.setText(_translate("Tela_principal", "Salvar"))
+            #self.voltar.setText(_translate("Tela_principal", "Logout"))
             self.Tela_central.setTabText(self.Tela_central.indexOf(self.page2), _translate("Tela_principal", "Registrar"))
             self.codigo_label.setText(_translate("Tela_principal", "Código"))
             self.botao_pesquisar_2.setText(_translate("Tela_principal", "Pesquisar"))
@@ -314,6 +328,14 @@ try:
                 self.Tela_lista.setItem(contador, 4, preço)
                 contador += 1
 
+        def voltar_lg(self):
+            from login import Ui_JanDow
+            print("voltar")
+            self.tela = QtWidgets.QMainWindow()
+            self.login = Ui_JanDow()
+            self.login.setupUi(self.tela)
+            self.tela.show()
+            Tela_principal.hide()
         def pesquisar(self):
             nome = self.line_pesquisar.text()
             
